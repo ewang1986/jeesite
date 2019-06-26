@@ -49,7 +49,6 @@ import com.thinkgem.jeesite.modules.sys.web.LoginController;
 public class SystemAuthorizingRealm extends AuthorizingRealm {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
 	private SystemService systemService;
 	
 	public SystemAuthorizingRealm() {
@@ -62,7 +61,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-		
 		int activeSessionSize = getSystemService().getSessionDao().getActiveSessions(false).size();
 		if (logger.isDebugEnabled()){
 			logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
@@ -100,7 +98,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         }
 		
         AuthorizationInfo info = null;
-
         info = (AuthorizationInfo)UserUtils.getCache(UserUtils.CACHE_AUTH_INFO);
 
         if (info == null) {
