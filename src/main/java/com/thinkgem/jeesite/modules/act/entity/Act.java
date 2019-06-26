@@ -380,5 +380,3 @@ public class Act extends BaseEntity<Act> {
 	}
 
 }
-
-
